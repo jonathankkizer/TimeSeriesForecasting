@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1522712045580.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C400E134",
+    "lastKnownWriteTime" : 3972293010581316864,
+    "last_content_update" : 1522712045580,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "96fc543811af4ff6bf76fdfd31b6e61d",
+        "name" : "result",
+        "title" : "result"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

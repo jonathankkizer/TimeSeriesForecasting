@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1520809648205.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "586743027",
+    "id" : "E81DB96E",
+    "lastKnownWriteTime" : 1517455257,
+    "last_content_update" : 1517455257,
+    "path" : "~/Documents/Forecasting/Homework 2/homework2Script.R",
+    "project_path" : "homework2Script.R",
+    "properties" : {
+        "cursorPosition" : "45,38",
+        "scrollLine" : "36",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
