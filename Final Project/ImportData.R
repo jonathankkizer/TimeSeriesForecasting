@@ -14,3 +14,5 @@ CCIVTime <- ggplot() +
   xlab("Time") + ylab("Consumer Confidence Index") + ggtitle("CCI vs. Time, 1960-Present") +
   scale_y_continuous()
 ggsave("cciVTime.png", last_plot())
+
+write.csv(data_table, "postETLCCI.csv")
