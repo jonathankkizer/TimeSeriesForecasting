@@ -5,3 +5,5 @@ library(fpp)
 source("ImportData.R")
 # auto.ARIMA tests
 source("ARIMA.R")
+# Holt's Exponential Smoothing Model
+source("Holt.R")

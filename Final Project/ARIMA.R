@@ -32,3 +32,6 @@ dev.off()
 
 data_table$ARIMA_Fitted <- autoResult$fitted
 data_table$ARIMA_Residuals <- autoResult$residuals
+
+ARIMAForecast <- forecast(autoResult, h = 9)
+print(ARIMAForecast)
