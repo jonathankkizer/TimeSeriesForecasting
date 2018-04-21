@@ -18,15 +18,15 @@ autoArimaModelResiduals <- ggplot() +
   geom_point(aes(x = data_table$Time, y = autoResult$residuals), color = "blue") +
   geom_line(aes(x = data_table$Time, y = autoResult$residuals), color = "blue") +
   xlab("Time") + ylab("Residuals") + ggtitle("Residuals vs. Time") + scale_y_continuous()
-ggsave("Residuals_v_Time.png", last_plot())
+ggsave("ARIMA_Residuals_v_Time.png", last_plot())
 
 print(adf.test(x = autoResult$residuals))
 
-png("autoResultACF.png")
+png("ARIMA_ACF.png")
 plot(acf(autoResult$residuals))
 dev.off()
 
-png("autoResultPACF.png")
+png("ARIMA_PACF.png")
 plot(pacf(autoResult$residuals))
 dev.off()
 
