@@ -1,6 +1,6 @@
 library(ggplot2)
 library(fpp)
-
+cat("\n--------ARIMA Model Analysis--------\n")
 CCITimeSeries <- ts(data_table$CCI)
 autoResult <- auto.arima(CCITimeSeries, ic = "aicc", test = "adf", stepwise = FALSE, approximation = FALSE, trace = TRUE)
 print(autoResult)
@@ -19,6 +19,12 @@ autoArimaModelResiduals <- ggplot() +
   geom_line(aes(x = data_table$Time, y = autoResult$residuals), color = "blue") +
   xlab("Time") + ylab("Residuals") + ggtitle("Residuals vs. Time") + scale_y_continuous()
 ggsave("ARIMA_Residuals_v_Time.png", last_plot())
+
+autoARIMAHistogram <- ggplot() +
+  geom_histogram(aes(autoResult$residuals), binwidth = .05) +
+  ggtitle("Histogram of Auto ARIMA Residuals, Binwidth = .05") +
+  scale_y_continuous()
+ggsave("ARIMA_Residuals_Histogram.png", last_plot())
 
 print(adf.test(x = autoResult$residuals))
 

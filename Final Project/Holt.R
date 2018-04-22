@@ -1,6 +1,6 @@
 library(ggplot2)
 library(fpp)
-
+cat("\n--------Holt's Model Analysis--------\n")
 data_table$HoltLogCCI <- log(data_table$CCI)
 
 logCCIvTime <- ggplot() +
@@ -31,6 +31,12 @@ png("Holt_PACF.png")
 plot(pacf(data_table$HoltModelResiduals))
 dev.off()
 
+HoltResidualsHistogram <- ggplot() +
+  geom_histogram(aes(holtResult$residuals), binwidth = .001) +
+  ggtitle("Histogram of Holt Residuals, Binwidth = .001") +
+  scale_y_continuous()
+ggsave("Holt_Residuals_Histogram.png", last_plot())
+
 holtModelvsCCI <- ggplot() +
   geom_point(aes(x = data_table$Time, y = data_table$CCI), color = "red") +
   geom_line(aes(x = data_table$Time, y = data_table$CCI), color = "red") +
@@ -38,5 +44,12 @@ holtModelvsCCI <- ggplot() +
   geom_line(aes(x = data_table$Time, y = data_table$HoltModelFitted), color = "orange") +
   xlab("Time") + ylab("CCI (Red) & Holt's Model (Orange)") + ggtitle("CCI & Holt's Model vs. Time") + scale_y_continuous()
 ggsave("Holt_ModelvsData.png", last_plot())
+
+holtModelResidualsvsTime <- ggplot() +
+  geom_point(aes(x = data_table$Time, y = data_table$HoltModelResiduals), color = "orange") +
+  geom_line(aes(x = data_table$Time, y = data_table$HoltModelResiduals), color = "orange") +
+  xlab("Time") + ylab("Holt Model Residuals") + ggtitle("Holt Model Residuals vs. Time") +
+  scale_y_continuous()
+ggsave("Holt_ResidualsvsTime.png", last_plot())
 
                
