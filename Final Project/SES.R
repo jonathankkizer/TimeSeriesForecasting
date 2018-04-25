@@ -44,3 +44,10 @@ dev.off()
 
 data_table$SESModelFitted <- SESResult$fitted
 data_table$SESModelResiduals <- SESResult$residuals
+
+print(ad.test(SESResult$residuals))
+
+png("SES_QQ.png")
+qqnorm(SESResult$residuals, datax = FALSE)
+qqline(SESResult$residuals)
+dev.off()

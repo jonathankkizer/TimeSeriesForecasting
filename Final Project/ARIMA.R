@@ -41,3 +41,9 @@ data_table$ARIMA_Residuals <- autoResult$residuals
 
 ARIMAForecast <- forecast(autoResult, h = 9)
 print(ARIMAForecast)
+print(ad.test(autoResult$residuals))
+
+png("ARIMA_QQ.png")
+qqnorm(autoResult$residuals, datax = FALSE)
+qqline(autoResult$residuals)
+dev.off()

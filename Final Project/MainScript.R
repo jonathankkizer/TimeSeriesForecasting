@@ -13,5 +13,7 @@ source("ARIMA.R")
 source("Holt.R")
 # Simple Exponential Smoothing Model
 source("SES.R")
+# GARCH Model
+source("GARCH.R")
 
 closeAllConnections()

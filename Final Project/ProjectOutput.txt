@@ -148,3 +148,61 @@ data:  SESResult$residuals
 Dickey-Fuller = -8.1181, Lag order = 8, p-value = 0.01
 alternative hypothesis: stationary
 
+
+Title:
+ GARCH Modelling 
+
+Call:
+ garchFit(formula = data_table$CCI ~ garch(1, 0), data = data_table$CCI, 
+    trace = F, include.constant = T) 
+
+Mean and Variance Equation:
+ data ~ garch(1, 0)
+<environment: 0x1128dee60>
+ [data = data_table$CCI]
+
+Conditional Distribution:
+ norm 
+
+Coefficient(s):
+        mu       omega      alpha1  
+100.640560    0.023246    0.975175  
+
+Std. Errors:
+ based on Hessian 
+
+Error Analysis:
+        Estimate  Std. Error  t value Pr(>|t|)    
+mu     1.006e+02   3.137e-02 3207.812  < 2e-16 ***
+omega  2.325e-02   3.766e-03    6.173 6.69e-10 ***
+alpha1 9.752e-01   6.253e-02   15.596  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Log Likelihood:
+ -783.8057    normalized:  -1.122931 
+
+Description:
+ Wed Apr 25 16:20:31 2018 by user:  
+
+
+Standardised Residuals Tests:
+                                Statistic p-Value     
+ Jarque-Bera Test   R    Chi^2  44.98769  1.702339e-10
+ Shapiro-Wilk Test  R    W      0.8868257 0           
+ Ljung-Box Test     R    Q(10)  2733.066  0           
+ Ljung-Box Test     R    Q(15)  3439.065  0           
+ Ljung-Box Test     R    Q(20)  3943.882  0           
+ Ljung-Box Test     R^2  Q(10)  100.7589  0           
+ Ljung-Box Test     R^2  Q(15)  107.5815  4.440892e-16
+ Ljung-Box Test     R^2  Q(20)  120.3588  2.220446e-16
+ LM Arch Test       R    TR^2   105.1672  0           
+
+Information Criterion Statistics:
+     AIC      BIC      SIC     HQIC 
+2.254458 2.274006 2.254421 2.262015 
+
+NULL
+
+Adjusted AIC:
+1573.612

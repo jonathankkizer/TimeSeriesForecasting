@@ -52,4 +52,10 @@ holtModelResidualsvsTime <- ggplot() +
   scale_y_continuous()
 ggsave("Holt_ResidualsvsTime.png", last_plot())
 
+print(ad.test(holtResult$residuals))
+
+png("Holt_QQ.png")
+qqnorm(holtResult$residuals, datax = FALSE)
+qqline(holtResult$residuals)
+dev.off()
                
