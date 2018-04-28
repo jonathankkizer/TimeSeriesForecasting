@@ -1,3 +1,7 @@
+
+-----------------------BEGIN ANALYSIS-----------------------
+
+ Data Table First and Last Ten Columns:
   Time YearMonth      CCI
 1    1   1960-01 101.5427
 2    2   1960-02 101.2864
@@ -86,6 +90,12 @@ alternative hypothesis: stationary
 706       101.6138 100.5271 102.7006  99.95182 103.2758
 707       101.6214 100.4736 102.7693  99.86600 103.3769
 
+	Anderson-Darling normality test
+
+data:  autoResult$residuals
+A = 2.8841, p-value = 2.957e-07
+
+
 --------Holt's Model Analysis--------
 Holt's method 
 
@@ -114,6 +124,12 @@ Call:
 705       4.629641 4.606289 4.652993 4.593927 4.665354
 706       4.631148 4.602959 4.659336 4.588037 4.674258
 707       4.632655 4.599336 4.665973 4.581699 4.683610
+
+	Anderson-Darling normality test
+
+data:  holtResult$residuals
+A = 7.9629, p-value < 2.2e-16
+
 
 --------SES Model Analysis--------
 Simple exponential smoothing 
@@ -149,6 +165,14 @@ Dickey-Fuller = -8.1181, Lag order = 8, p-value = 0.01
 alternative hypothesis: stationary
 
 
+	Anderson-Darling normality test
+
+data:  SESResult$residuals
+A = 3.5122, p-value = 8.796e-09
+
+
+--------GARCH Model Analysis--------
+
 Title:
  GARCH Modelling 
 
@@ -158,7 +182,7 @@ Call:
 
 Mean and Variance Equation:
  data ~ garch(1, 0)
-<environment: 0x1128dee60>
+<environment: 0x1101a8f20>
  [data = data_table$CCI]
 
 Conditional Distribution:
@@ -183,7 +207,7 @@ Log Likelihood:
  -783.8057    normalized:  -1.122931 
 
 Description:
- Wed Apr 25 16:20:31 2018 by user:  
+ Sat Apr 28 15:40:31 2018 by user:  
 
 
 Standardised Residuals Tests:
@@ -204,5 +228,142 @@ Information Criterion Statistics:
 
 NULL
 
-Adjusted AIC:
-1573.612
+Autocorrelations of series ‘data_table$GARCH1_eta’, by lag
+
+    0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20    21 
+1.000 0.908 0.766 0.659 0.600 0.572 0.559 0.538 0.512 0.494 0.490 0.488 0.473 0.449 0.417 0.391 0.378 0.378 0.386 0.379 0.352 0.341 
+   22    23    24    25    26    27    28 
+0.348 0.364 0.372 0.359 0.330 0.300 0.283 
+
+--------ARMA-GARCH Model Analysis--------
+
+*---------------------------------*
+*          GARCH Model Fit        *
+*---------------------------------*
+
+Conditional Variance Dynamics 	
+-----------------------------------
+GARCH Model	: sGARCH(1,1)
+Mean Model	: ARFIMA(3,0,1)
+Distribution	: norm 
+
+Optimal Parameters
+------------------------------------
+         Estimate  Std. Error   t value Pr(>|t|)
+mu     101.232244    0.058951 1717.2323  0.00000
+ar1      2.172881    0.004477  485.3003  0.00000
+ar2     -1.736246    0.005403 -321.3589  0.00000
+ar3      0.557160    0.006807   81.8562  0.00000
+ma1      0.400662    0.033711   11.8852  0.00000
+omega    0.000041    0.000028    1.4634  0.14336
+alpha1   0.103003    0.019147    5.3795  0.00000
+beta1    0.895997    0.017808   50.3138  0.00000
+
+Robust Standard Errors:
+         Estimate  Std. Error   t value Pr(>|t|)
+mu     101.232244    0.097141 1042.1161 0.000000
+ar1      2.172881    0.003711  585.5237 0.000000
+ar2     -1.736246    0.003520 -493.2071 0.000000
+ar3      0.557160    0.004318  129.0310 0.000000
+ma1      0.400662    0.043375    9.2371 0.000000
+omega    0.000041    0.000034    1.2033 0.228849
+alpha1   0.103003    0.021676    4.7519 0.000002
+beta1    0.895997    0.020519   43.6674 0.000000
+
+LogLikelihood : 756.839 
+
+Information Criteria
+------------------------------------
+                    
+Akaike       -2.1457
+Bayes        -2.0935
+Shibata      -2.1459
+Hannan-Quinn -2.1255
+
+Weighted Ljung-Box Test on Standardized Residuals
+------------------------------------
+                         statistic   p-value
+Lag[1]                      0.1277 7.208e-01
+Lag[2*(p+q)+(p+q)-1][11]   13.3418 0.000e+00
+Lag[4*(p+q)+(p+q)-1][19]   23.3354 1.283e-05
+d.o.f=4
+H0 : No serial correlation
+
+Weighted Ljung-Box Test on Standardized Squared Residuals
+------------------------------------
+                        statistic p-value
+Lag[1]                      3.115 0.07759
+Lag[2*(p+q)+(p+q)-1][5]     3.824 0.27680
+Lag[4*(p+q)+(p+q)-1][9]     5.951 0.30384
+d.o.f=2
+
+Weighted ARCH LM Tests
+------------------------------------
+            Statistic Shape Scale P-Value
+ARCH Lag[3]    0.1303 0.500 2.000  0.7181
+ARCH Lag[5]    0.3741 1.440 1.667  0.9200
+ARCH Lag[7]    2.8147 2.315 1.543  0.5492
+
+Nyblom stability test
+------------------------------------
+Joint Statistic:  6.2069
+Individual Statistics:               
+mu     0.005629
+ar1    0.072222
+ar2    0.029635
+ar3    0.027706
+ma1    2.570782
+omega  0.582022
+alpha1 0.157099
+beta1  0.328496
+
+Asymptotic Critical Values (10% 5% 1%)
+Joint Statistic:     	 1.89 2.11 2.59
+Individual Statistic:	 0.35 0.47 0.75
+
+Sign Bias Test
+------------------------------------
+                   t-value   prob sig
+Sign Bias           0.6281 0.5301    
+Negative Sign Bias  0.9906 0.3222    
+Positive Sign Bias  0.2737 0.7844    
+Joint Effect        1.2116 0.7502    
+
+
+Adjusted Pearson Goodness-of-Fit Test:
+------------------------------------
+  group statistic p-value(g-1)
+1    20     13.58       0.8078
+2    30     29.91       0.4186
+3    40     46.99       0.1779
+4    50     48.99       0.4735
+
+
+Elapsed time : 0.4211049 
+
+
+*------------------------------------*
+*       GARCH Model Forecast         *
+*------------------------------------*
+Model: sGARCH
+Horizon: 9
+Roll Steps: 0
+Out of Sample: 0
+
+0-roll forecast [T0=1971-11-30]:
+    Series   Sigma
+T+1  101.6 0.08292
+T+2  101.7 0.08312
+T+3  101.8 0.08332
+T+4  101.8 0.08353
+T+5  101.7 0.08373
+T+6  101.7 0.08393
+T+7  101.6 0.08413
+T+8  101.6 0.08433
+T+9  101.6 0.08453
+
+
+
+Corrected AIC (AIC * n):
+-1497.699
+-----------------------END ANALYSIS-----------------------
