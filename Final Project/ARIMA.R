@@ -2,7 +2,7 @@ library(ggplot2)
 library(fpp)
 cat("\n--------ARIMA Model Analysis--------\n")
 CCITimeSeries <- ts(data_table$CCI)
-autoResult <- auto.arima(CCITimeSeries, ic = "aicc", test = "adf", stepwise = FALSE, approximation = FALSE, trace = TRUE, max.p = 12, max.d = 12, max.q = 12)
+autoResult <- auto.arima(CCITimeSeries, ic = "aicc", test = "adf", stepwise = FALSE, approximation = FALSE, trace = TRUE)
 print(autoResult)
 
 autoArimaModel <- ggplot() +

@@ -1,5 +1,6 @@
 library(ggplot2)
 library(fpp)
+library(nortest)
 
 # Sink console output to file
 sink(file = "ProjectOutput.txt", append = FALSE, type = "output")
@@ -18,5 +19,8 @@ source("SES.R")
 source("GARCH.R")
 # ARMAGARCH Model -- using rugarch package
 source("ARMAGARCH.R")
+
+
 cat("\n-----------------------END ANALYSIS-----------------------\n")
+
 closeAllConnections()

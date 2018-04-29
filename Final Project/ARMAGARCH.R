@@ -8,7 +8,7 @@ cat("\n--------ARMA-GARCH Model Analysis--------\n")
 
 model=ugarchspec(
   variance.model = list(model = "sGARCH", garchOrder = c(1, 1)),
-  mean.model = list(armaOrder = c(3, 1), include.mean = TRUE),
+  mean.model = list(armaOrder = c(3, 2), include.mean = TRUE),
   distribution.model = "norm"
 )
 
@@ -35,14 +35,14 @@ ARMAGARCHvsData <- ggplot() +
   geom_line(aes(x = data_table$Time, y = data_table$CCI), color = "red") +
   geom_point(aes(x = data_table$Time, y = uGarchResult@fit$fitted.values), color = "purple") +
   geom_line(aes(x = data_table$Time, y = uGarchResult@fit$fitted.values), color = "purple") +
-  ylab("CCI (Red) & ARMA(3,1)-GARCH(1,1) Model (Brown") + xlab("Time") + ggtitle("ARMA-GARCH & Data vs Time") +
+  ylab("CCI (Red) & ARMA(3,2)-GARCH(1,1) Model (Purple)") + xlab("Time") + ggtitle("ARMA-GARCH & Data vs Time") +
   scale_y_continuous()
 ggsave("ARMA-GARCHvsCCI.png", last_plot())
 
 ARMAGARCHErrorsVTime <- ggplot() +
   geom_point(aes(x = data_table$Time, y = uGarchResult@fit$residuals), color = "purple") +
-  #geom_line(aes(x = data_table$Time, y = uGarchResult@fit$residuals), color = "purple") +
-  ylab("ARMA(3,1)-GARCH(1,1) Residuals") + xlab("Time") + ggtitle("ARMA-GARCH Residuals vs. Time") +
+  geom_line(aes(x = data_table$Time, y = uGarchResult@fit$residuals), color = "purple") +
+  ylab("ARMA(3,2)-GARCH(1,1) Residuals") + xlab("Time") + ggtitle("ARMA-GARCH Residuals vs. Time") +
   scale_y_continuous()
 ggsave("ARMA-GARCH_ResidualsVTime.png", last_plot())
 
@@ -54,6 +54,6 @@ ggsave("ARMAGARCH_Residuals_Histogram.png", last_plot())
 
 print(ugarchforecast(uGarchResult, data = NULL, n.ahead = 9))
 
-actAIC <- -2.1457 * NROW(data_table$CCI)
+actAIC <- -2.1736 * NROW(data_table$CCI)
 cat("\nCorrected AIC (AIC * n):\n")
 cat(actAIC)
