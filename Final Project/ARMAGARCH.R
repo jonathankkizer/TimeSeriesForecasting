@@ -20,6 +20,10 @@ data_table$ARMAGARCHresiduals <- uGarchResult@fit$residuals
 
 
 data_table$uGarch_Eta <- uGarchResult@fit$residuals / uGarchResult@fit$sigma
+data_table$uGarch_EtaSq <- data_table$uGarch_Eta^2
+
+print(Box.test(data_table$uGarch_Eta, lag = 10, type = "Ljung-Box"))
+print(Box.test(data_table$uGarch_EtaSq, lag = 10, type = "Ljung-Box"))
 
 
 png("ARMA-GARCH_eta_ACF.png")

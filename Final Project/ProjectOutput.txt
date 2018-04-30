@@ -189,7 +189,7 @@ Call:
 
 Mean and Variance Equation:
  data ~ garch(1, 0)
-<environment: 0x114d1b270>
+<environment: 0x112e031b8>
  [data = data_table$CCI]
 
 Conditional Distribution:
@@ -214,7 +214,7 @@ Log Likelihood:
  -783.8057    normalized:  -1.122931 
 
 Description:
- Sun Apr 29 10:28:54 2018 by user:  
+ Mon Apr 30 11:25:07 2018 by user:  
 
 
 Standardised Residuals Tests:
@@ -349,7 +349,19 @@ Adjusted Pearson Goodness-of-Fit Test:
 4    50     52.86       0.3274
 
 
-Elapsed time : 0.2335169 
+Elapsed time : 0.3263631 
+
+
+	Box-Ljung test
+
+data:  data_table$uGarch_Eta
+X-squared = 11.669, df = 10, p-value = 0.3078
+
+
+	Box-Ljung test
+
+data:  data_table$uGarch_EtaSq
+X-squared = 12.147, df = 10, p-value = 0.2753
 
 
 *------------------------------------*
